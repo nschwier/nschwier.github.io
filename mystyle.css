@@ -10,7 +10,7 @@
 
 .column {
   float: left;
-  width: 200px;
+  max-width: 200px;
 }
 
 /* The Modal (background) */
