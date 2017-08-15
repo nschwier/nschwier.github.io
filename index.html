@@ -1,82 +1,114 @@
-<!DOCTYPE html>
 <html>
 
 <head>
-	<link href='simplelightbox-master/dist/simplelightbox.min.css' rel='stylesheet' type='text/css'>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	<script type="text/javascript" src="simplelightbox-master/dist/simple-lightbox.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/nschwier/nschwier.github.io/31e25ab9/mystyle.css">
+
 </head>
 
 <body>
+   <div class="row">
+    <div class="column">
+      <img src="https://cdn.rawgit.com/nschwier/nschwier.github.io/7de4dad6/Images/Food/Portfolio%20(12%20of%2083).jpg" onclick="openModal();currentSlide(1)" class="hover-shadow">
+    </div>
+    <div class="column">
+      <img src="img2.jpg" onclick="openModal();currentSlide(2)" class="hover-shadow">
+    </div>
+    <div class="column">
+      <img src="img3.jpg" onclick="openModal();currentSlide(3)" class="hover-shadow">
+    </div>
+    <div class="column">
+      <img src="img4.jpg" onclick="openModal();currentSlide(4)" class="hover-shadow">
+    </div>
+  </div>
 
-<div class='container'>
- <div class="gallery">
- 
-  <?php 
-  // Image extensions
-  $image_extensions = array("png","jpg","jpeg","gif");
+  <div id="myModal" class="modal">
+    <span class="close cursor" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
 
-  // Target directory
-  $dir = 'nschwier.github.io/Images/Food/';
-  if (is_dir($dir)){
- 
-   if ($dh = opendir($dir)){
-    $count = 1;
+      <div class="mySlides">
+        <div class="numbertext">1 / 4</div>
+          <img src="https://cdn.rawgit.com/nschwier/nschwier.github.io/7de4dad6/Images/Food/Portfolio%20(12%20of%2083).jpg" style="width:100%">
+      </div>
 
-    // Read files
-    while (($file = readdir($dh)) !== false){
+      <div class="mySlides">
+        <div class="numbertext">2 / 4</div>
+          <img src="img_fjords_wide.jpg" style="width:100%">
+      </div>
 
-     if($file != '' && $file != '.' && $file != '..'){
- 
-      // Thumbnail image path
-      $thumbnail_path = "nschwier.github.io/Images/Food/".$file;
+      <div class="mySlides">
+        <div class="numbertext">3 / 4</div>
+          <img src="img_mountains_wide.jpg" style="width:100%">
+      </div>
 
-      // Image path
-      $image_path = "nschwier.github.io/Images/Food/".$file;
- 
-      $thumbnail_ext = pathinfo($thumbnail_path, PATHINFO_EXTENSION);
-      $image_ext = pathinfo($image_path, PATHINFO_EXTENSION);
+      <div class="mySlides">
+        <div class="numbertext">4 / 4</div>
+          <img src="img_lights_wide.jpg" style="width:100%">
+      </div>
 
-      // Check its not folder and it is image file
-      if(!is_dir($image_path) && 
-         in_array($thumbnail_ext,$image_extensions) && 
-         in_array($image_ext,$image_extensions)){
-   ?>
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
-       <!-- Image -->
-       <a href="<?php echo $image_path; ?>">
-        <img src="<?php echo $thumbnail_path; ?>" alt="" title=""/>
-       </a>
-       <!-- --- -->
-       <?php
+      <div class="caption-container">
+        <p id="caption"></p>
+      </div>
 
-       // Break
-       if( $count%4 == 0){
-       ?>
-        <div class="clear"></div>
-       <?php 
-       }
-       $count++;
-      }
-     }
- 
-    }
-    closedir($dh);
-   }
+      <div class="column">
+        <img class="demo" src="img1.jpg" onclick="currentSlide(1)" alt="Nature">
+      </div>
+
+      <div class="column">
+        <img class="demo" src="img2.jpg" onclick="currentSlide(2)" alt="Trolltunga">
+      </div>
+
+      <div class="column">
+        <img class="demo" src="img3.jpg" onclick="currentSlide(3)" alt="Mountains">
+      </div>
+
+      <div class="column">
+        <img class="demo" src="img4.jpg" onclick="currentSlide(4)" alt="Lights">
+      </div>
+    </div>
+  </div> 
+
+<script>
+function openModal() {
+  document.getElementById('myModal').style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById('myModal').style.display = "none";
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
   }
- ?>
- </div>
-</div>
-
-<!-- Script -->
-<script type='text/javascript'>
-$(document).ready(function(){
-
- // Intialize gallery
- var gallery = $('.gallery a').simpleLightbox();
-
-});
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
 </script>
 
 </body>
+
 </html>
