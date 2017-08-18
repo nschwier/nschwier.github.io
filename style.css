@@ -16,4 +16,10 @@
 .w3-button:hover {
     background-color: #4CAF50; /* Green */
     color: white;
+    border-radius: 4px;
+    transition-duration: 0.4s;
+    font-size: 16px;
+    position: relative;
+    display: inline;
+    margin-bottom: 50px;
 }
