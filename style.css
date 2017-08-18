@@ -1,11 +1,8 @@
 .gallery {
   border: 1px solid black;
-  position: absolute;
-  display: inline;
 }
 
 .mySlides{
-  border: 1px solid black;
 }
 
 .w3-button {
@@ -13,8 +10,6 @@
   transition-duration: 0.4s;
   font-size: 16px;
   position: relative;
-  display: inline;
-  margin-bottom: 50px;
 }
 
 .w3-button:hover {
