@@ -4,6 +4,10 @@
   display: inline;
 }
 
+.mySlides{
+  border: 1px solid black;
+}
+
 .w3-button {
   border-radius: 4px;
   transition-duration: 0.4s;
