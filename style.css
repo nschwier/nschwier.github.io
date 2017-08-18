@@ -1,11 +1,15 @@
 .gallery {
   border: 1px solid black;
+  position: absolute;
+  display: inline;
 }
 
 .w3-button {
   border-radius: 4px;
   transition-duration: 0.4s;
   font-size: 16px;
+  position: relative;
+  display: inline;
 }
 
 .w3-button:hover {
