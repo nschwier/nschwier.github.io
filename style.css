@@ -26,3 +26,8 @@
     background-color: #4CAF50;
     color: white;
 }
+
+.container {
+    		max-width: 500px;
+    		margin: auto;
+		}
